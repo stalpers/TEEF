@@ -1,5 +1,6 @@
 # Local Claude Code settings
 .claude/settings.local.json
-
+.env
+env
 # Python bytecode from running the archive generator tests
 __pycache__/
