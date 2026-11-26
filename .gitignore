@@ -4,3 +4,6 @@
 env
 # Python bytecode from running the archive generator tests
 __pycache__/
+
+# Internal design and plan notes, kept local
+design/

@@ -35,7 +35,6 @@ See the [example package](docs/examples/supplier-package/manifest.json) for a co
 | [`docs/examples/`](docs/examples/) | A fictional example package |
 | [`conformance/`](conformance/README.md) | Test packages with the result a conformant recipient must produce |
 | [`docs/contribute.md`](docs/contribute.md) | How to propose a change |
-| [`design/`](design/) | Design notes for work on the format and suite |
 
 ## Validating a package
 
