@@ -1,0 +1,425 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TPRM Evidence Exchange Manifest, draft 0.1.0",
+  "description": "Manifest for transferring supplier questionnaire responses and evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "packageId", "generatedAt", "publisher", "subject"],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "packageId": { "$ref": "#/$defs/packageId" },
+    "supersedes": { "$ref": "#/$defs/packageId" },
+    "generatedAt": { "$ref": "#/$defs/timestamp" },
+    "publisher": { "$ref": "#/$defs/organization" },
+    "subject": { "$ref": "#/$defs/subject" },
+    "questionnaires": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/questionnaire" }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/evidence" }
+    }
+  },
+  "anyOf": [
+    { "required": ["questionnaires"] },
+    { "required": ["evidence"] }
+  ],
+  "$defs": {
+    "text": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "packageId": {
+      "type": "string",
+      "format": "uuid",
+      "minLength": 36,
+      "maxLength": 36,
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z(?![\\s\\S])"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "organization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "$ref": "#/$defs/text" },
+        "identifier": { "type": "string", "format": "uri" }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organization"],
+      "properties": {
+        "organization": { "$ref": "#/$defs/organization" },
+        "service": { "$ref": "#/$defs/text" },
+        "scope": { "$ref": "#/$defs/subjectScope" }
+      }
+    },
+    "subjectScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "description": { "$ref": "#/$defs/text" },
+        "countries": { "$ref": "#/$defs/countryList" },
+        "components": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "countryList": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{2}(?![\\s\\S])"
+      }
+    },
+    "questionnaire": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "responses"],
+      "properties": {
+        "id": { "type": "string", "format": "uri" },
+        "version": { "$ref": "#/$defs/text" },
+        "responses": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/response" }
+        }
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["questionId", "status"],
+      "properties": {
+        "questionId": { "$ref": "#/$defs/text" },
+        "questionText": { "$ref": "#/$defs/text" },
+        "status": { "enum": ["answered", "reference", "unknown", "notApplicable", "withheld"] },
+        "answer": { "$ref": "#/$defs/answer" },
+        "note": { "$ref": "#/$defs/text" },
+        "evidenceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/evidenceRef" }
+        },
+        "mappings": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/mapping" }
+        }
+      },
+      "oneOf": [
+        {
+          "properties": { "status": { "const": "answered" } },
+          "required": ["answer"]
+        },
+        {
+          "properties": { "status": { "const": "reference" } },
+          "required": ["evidenceRefs"],
+          "not": { "required": ["answer"] }
+        },
+        {
+          "properties": { "status": { "enum": ["unknown", "notApplicable", "withheld"] } },
+          "not": {
+            "anyOf": [
+              { "required": ["answer"] },
+              { "required": ["evidenceRefs"] }
+            ]
+          }
+        }
+      ]
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheme", "id"],
+      "properties": {
+        "scheme": { "type": "string", "format": "uri" },
+        "version": { "$ref": "#/$defs/text" },
+        "id": { "$ref": "#/$defs/text" },
+        "relationship": { "enum": ["equivalent", "subset", "superset", "intersects"] }
+      }
+    },
+    "answer": {
+      "oneOf": [
+        { "$ref": "#/$defs/text" },
+        { "type": "boolean" },
+        { "type": "number" },
+        {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      ]
+    },
+    "evidenceId": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,127}(?![\\s\\S])"
+    },
+    "evidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceId"],
+      "properties": {
+        "evidenceId": { "$ref": "#/$defs/evidenceId" },
+        "locator": { "$ref": "#/$defs/text" }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "title", "content"],
+      "properties": {
+        "id": { "$ref": "#/$defs/evidenceId" },
+        "kind": {
+          "enum": [
+            "certificate",
+            "assurance-report",
+            "bridge-letter",
+            "penetration-test",
+            "continuity-test",
+            "architecture-diagram",
+            "policy",
+            "insurance-certificate",
+            "agreement",
+            "subprocessor-list",
+            "other"
+          ]
+        },
+        "title": { "$ref": "#/$defs/text" },
+        "issuer": { "$ref": "#/$defs/organization" },
+        "scope": { "$ref": "#/$defs/text" },
+        "issuedOn": { "$ref": "#/$defs/date" },
+        "validFrom": { "$ref": "#/$defs/date" },
+        "validUntil": { "$ref": "#/$defs/date" },
+        "coveragePeriod": { "$ref": "#/$defs/coveragePeriod" },
+        "collectedAt": { "$ref": "#/$defs/timestamp" },
+        "relatedEvidence": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relatedEvidenceRef" }
+        },
+        "assuranceReport": { "$ref": "#/$defs/assuranceReport" },
+        "certification": { "$ref": "#/$defs/certification" },
+        "content": { "$ref": "#/$defs/evidenceContent" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "not": { "properties": { "kind": { "const": "assurance-report" } } }
+          },
+          "then": {
+            "not": { "required": ["assuranceReport"] }
+          }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "certificate" } }
+          },
+          "then": {
+            "required": ["certification"],
+            "not": { "required": ["scope"] }
+          },
+          "else": {
+            "not": { "required": ["certification"] }
+          }
+        }
+      ]
+    },
+    "certification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standard", "scope"],
+      "properties": {
+        "standard": { "$ref": "#/$defs/text" },
+        "certificateNumber": { "$ref": "#/$defs/text" },
+        "scope": { "$ref": "#/$defs/text" },
+        "organizations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/organization" }
+        },
+        "countries": { "$ref": "#/$defs/countryList" },
+        "accreditationBody": { "$ref": "#/$defs/organization" },
+        "sites": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "statementOfApplicability": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "version": { "$ref": "#/$defs/text" },
+            "date": { "$ref": "#/$defs/date" }
+          }
+        },
+        "lastAudit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["date", "type"],
+          "properties": {
+            "date": { "$ref": "#/$defs/date" },
+            "type": { "enum": ["initial", "surveillance", "recertification", "annual-assessment"] }
+          }
+        },
+        "verificationUri": { "$ref": "#/$defs/httpsUri" }
+      }
+    },
+    "assuranceReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standard"],
+      "properties": {
+        "standard": { "$ref": "#/$defs/text" },
+        "reportType": { "enum": ["type-1", "type-2"] },
+        "criteria": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        },
+        "organizations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/organization" }
+        },
+        "countries": { "$ref": "#/$defs/countryList" },
+        "opinion": { "enum": ["unmodified", "qualified", "adverse", "disclaimer"] },
+        "exceptions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/reportException" }
+        },
+        "subserviceOrganizations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/subserviceOrganization" }
+        },
+        "userEntityControls": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/text" }
+        }
+      }
+    },
+    "reportException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description"],
+      "properties": {
+        "reference": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" },
+        "managementResponse": { "$ref": "#/$defs/text" }
+      }
+    },
+    "subserviceOrganization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["organization", "method"],
+      "properties": {
+        "organization": { "$ref": "#/$defs/organization" },
+        "method": { "enum": ["carve-out", "inclusive"] },
+        "services": { "$ref": "#/$defs/text" }
+      }
+    },
+    "relatedEvidenceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidenceId", "relationship"],
+      "properties": {
+        "evidenceId": { "$ref": "#/$defs/evidenceId" },
+        "relationship": { "enum": ["bridges", "summarizes", "supplements"] }
+      }
+    },
+    "coveragePeriod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "$ref": "#/$defs/date" },
+        "to": { "$ref": "#/$defs/date" }
+      }
+    },
+    "evidenceContent": {
+      "oneOf": [
+        { "$ref": "#/$defs/inlineContent" },
+        { "$ref": "#/$defs/fileContent" },
+        { "$ref": "#/$defs/externalContent" }
+      ]
+    },
+    "inlineContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "text"],
+      "properties": {
+        "mode": { "const": "inline" },
+        "text": { "$ref": "#/$defs/text" }
+      }
+    },
+    "fileContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "path", "mediaType", "sha256"],
+      "properties": {
+        "mode": { "const": "file" },
+        "path": {
+          "type": "string",
+          "pattern": "^evidence/[a-z0-9][a-z0-9_-]{0,79}(\\.[a-z0-9]{1,12})?(?![\\s\\S])"
+        },
+        "mediaType": { "$ref": "#/$defs/mediaType" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "externalContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "uri"],
+      "properties": {
+        "mode": { "const": "external" },
+        "uri": { "$ref": "#/$defs/httpsUri" },
+        "mediaType": { "$ref": "#/$defs/mediaType" },
+        "sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "httpsUri": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://[^/?#\\s@]+(?:[/?#]|(?![\\s\\S]))"
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9!#$&^_.+-]*/[a-z0-9][a-z0-9!#$&^_.+-]*(?![\\s\\S])"
+    },
+    "sha256": {
+      "type": "string",
+      "minLength": 64,
+      "maxLength": 64,
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

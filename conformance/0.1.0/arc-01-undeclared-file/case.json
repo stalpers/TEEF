@@ -1,0 +1,11 @@
+{
+  "description": "The archive contains a file that the manifest does not declare.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-01"
+    ],
+    "warnings": []
+  }
+}

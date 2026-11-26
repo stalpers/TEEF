@@ -1,0 +1,11 @@
+{
+  "description": "The bridge letter starts before the report's coverage ends.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-DATE-02"
+    ]
+  }
+}

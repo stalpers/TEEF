@@ -1,0 +1,16 @@
+{
+  "description": "The archive has three entries, two of them attachments, above the recipient's limit of one.",
+  "input": "package.zip",
+  "context": {
+    "limits": {
+      "maxEntries": 1
+    }
+  },
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-07"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The certificate covers a different legal entity than the subject, compared by identifier.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-SCOPE-06"
+    ]
+  }
+}

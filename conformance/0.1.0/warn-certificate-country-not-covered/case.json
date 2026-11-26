@@ -1,0 +1,11 @@
+{
+  "description": "The subject operates in Portugal, which the certificate does not cover.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-SCOPE-09"
+    ]
+  }
+}

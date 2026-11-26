@@ -1,0 +1,11 @@
+{
+  "description": "An evidence item has no stated scope.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-EV-10"
+    ]
+  }
+}

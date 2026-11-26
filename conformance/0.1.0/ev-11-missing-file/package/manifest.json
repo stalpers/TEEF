@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageId": "7c1e2a64-3b0f-4d8e-9a51-2f6b8c0d4e17",
+  "generatedAt": "2026-11-26T09:00:00Z",
+  "publisher": {
+    "name": "Example Supplier AG",
+    "identifier": "https://supplier.example/id/ag"
+  },
+  "subject": {
+    "organization": {
+      "name": "Example Supplier AG",
+      "identifier": "https://supplier.example/id/ag"
+    }
+  },
+  "questionnaires": [
+    {
+      "id": "https://buyer.example/questionnaires/minimal",
+      "version": "1",
+      "responses": [
+        {
+          "questionId": "Q-01",
+          "status": "answered",
+          "answer": true,
+          "evidenceRefs": [
+            {
+              "evidenceId": "policy-summary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "policy-summary",
+      "kind": "policy",
+      "title": "Information security policy summary",
+      "issuer": {
+        "name": "Example Supplier AG"
+      },
+      "scope": "Example Supplier AG.",
+      "content": {
+        "mode": "inline",
+        "text": "The information security policy is approved by the board and reviewed each year."
+      }
+    },
+    {
+      "id": "data-file",
+      "kind": "other",
+      "title": "Example evidence file",
+      "issuer": {
+        "name": "Example Supplier AG"
+      },
+      "scope": "Example Supplier AG.",
+      "content": {
+        "mode": "file",
+        "path": "evidence/data.txt",
+        "mediaType": "text/plain",
+        "sha256": "d2370e77e5db13e923f8dc3ad035586fbcbefb69ed07d53b05553a22c43eaa2c"
+      }
+    }
+  ]
+}

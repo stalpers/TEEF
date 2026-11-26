@@ -1,0 +1,5 @@
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Python bytecode from running the archive generator tests
+__pycache__/

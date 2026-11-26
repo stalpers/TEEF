@@ -1,0 +1,11 @@
+{
+  "description": "An evidenceRef points to an evidence ID that the package does not contain.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-REF-06"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "An evidence item's validity ended before the package was generated.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-DATE-05"
+    ]
+  }
+}

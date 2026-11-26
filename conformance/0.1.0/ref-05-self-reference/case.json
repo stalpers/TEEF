@@ -1,0 +1,11 @@
+{
+  "description": "An evidence item lists itself in relatedEvidence.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-REF-05"
+    ],
+    "warnings": []
+  }
+}

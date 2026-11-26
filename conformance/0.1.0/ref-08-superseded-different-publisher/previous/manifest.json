@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageId": "0b9d6f3e-8a2c-4e71-b5d4-6c3a1f9e2d80",
+  "generatedAt": "2026-06-01T09:00:00Z",
+  "publisher": {
+    "name": "Other Publisher AG",
+    "identifier": "https://other.example/id/publisher"
+  },
+  "subject": {
+    "organization": {
+      "name": "Example Supplier AG",
+      "identifier": "https://supplier.example/id/ag"
+    }
+  },
+  "questionnaires": [
+    {
+      "id": "https://buyer.example/questionnaires/minimal",
+      "version": "1",
+      "responses": [
+        {
+          "questionId": "Q-01",
+          "status": "answered",
+          "answer": true,
+          "evidenceRefs": [
+            {
+              "evidenceId": "policy-summary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "policy-summary",
+      "kind": "policy",
+      "title": "Information security policy summary",
+      "issuer": {
+        "name": "Example Supplier AG"
+      },
+      "scope": "Example Supplier AG.",
+      "content": {
+        "mode": "inline",
+        "text": "The information security policy is approved by the board and reviewed each year."
+      }
+    }
+  ]
+}

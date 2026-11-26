@@ -1,0 +1,16 @@
+{
+  "description": "The recipient already received a different manifest under the same package ID.",
+  "input": "package",
+  "context": {
+    "previousPackages": [
+      "previous/manifest.json"
+    ]
+  },
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ID-02"
+    ],
+    "warnings": []
+  }
+}

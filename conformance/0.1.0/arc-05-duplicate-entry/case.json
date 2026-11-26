@@ -1,0 +1,11 @@
+{
+  "description": "The archive contains manifest.json twice.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-05"
+    ],
+    "warnings": []
+  }
+}

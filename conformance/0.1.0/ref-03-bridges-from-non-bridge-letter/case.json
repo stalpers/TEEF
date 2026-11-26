@@ -1,0 +1,11 @@
+{
+  "description": "A policy, not a bridge letter, carries a bridges reference.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-REF-03"
+    ],
+    "warnings": []
+  }
+}

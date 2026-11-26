@@ -1,0 +1,11 @@
+{
+  "description": "A certificate has no certificate number.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-CERT-07"
+    ]
+  }
+}

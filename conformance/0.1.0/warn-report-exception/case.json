@@ -1,0 +1,11 @@
+{
+  "description": "An assurance report with an unmodified opinion lists an exception.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-AR-08"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "A declared evidence file is named con.json, a reserved device name on Windows.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-03"
+    ],
+    "warnings": []
+  }
+}

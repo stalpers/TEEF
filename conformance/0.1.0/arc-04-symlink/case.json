@@ -1,0 +1,11 @@
+{
+  "description": "An archive entry is a symbolic link.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-04"
+    ],
+    "warnings": []
+  }
+}

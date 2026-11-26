@@ -1,0 +1,16 @@
+{
+  "description": "The archive's entries, including the attachment alone, expand to more bytes than the recipient's limit of 10.",
+  "input": "package.zip",
+  "context": {
+    "limits": {
+      "maxExpandedBytes": 10
+    }
+  },
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-07"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageId": "410a3780-25d9-4d9e-a9a1-3ad29e634f35",
+  "generatedAt": "2026-11-26T09:00:00Z",
+  "publisher": {
+    "name": "Example Supplier Group AG",
+    "identifier": "https://supplier.example/id/group"
+  },
+  "subject": {
+    "organization": {
+      "name": "Example Supplier Operations AG",
+      "identifier": "https://supplier.example/id/operations"
+    },
+    "service": "Example Cloud Backup",
+    "scope": {
+      "countries": ["CH"],
+      "components": ["Backup storage", "Management console", "Subscription billing"],
+      "description": "Production service operated from Zurich. Support is provided from Zurich during business hours."
+    }
+  },
+  "questionnaires": [
+    {
+      "id": "https://buyer.example/questionnaires/cloud-due-diligence",
+      "version": "2026-11",
+      "responses": [
+        {
+          "questionId": "CERT-01",
+          "status": "answered",
+          "answer": true,
+          "evidenceRefs": [{ "evidenceId": "iso27001" }]
+        },
+        {
+          "questionId": "PRIVACY-02",
+          "status": "reference",
+          "evidenceRefs": [{ "evidenceId": "subprocessors", "locator": "subprocessors array" }]
+        },
+        {
+          "questionId": "RESILIENCE-03",
+          "questionText": "What is the recovery point objective (RPO) for customer backup data, in hours?",
+          "status": "answered",
+          "answer": 24,
+          "note": "Stated in hours.",
+          "evidenceRefs": [{ "evidenceId": "backup-policy-summary" }],
+          "mappings": [
+            { "scheme": "https://framework.example/controls", "version": "2.1", "id": "BC-08", "relationship": "subset" },
+            { "scheme": "https://other-buyer.example/questionnaires/vendor-security", "version": "3", "id": "Q-112", "relationship": "equivalent" }
+          ]
+        },
+        {
+          "questionId": "PRIVACY-04",
+          "status": "notApplicable",
+          "note": "This service does not offer an on-premises deployment."
+        },
+        {
+          "questionId": "RESILIENCE-05",
+          "status": "unknown",
+          "note": "A service-wide figure is unavailable."
+        },
+        {
+          "questionId": "SECURITY-06",
+          "status": "withheld",
+          "note": "Available through the supplier's restricted disclosure process."
+        },
+        {
+          "questionId": "ARCH-07",
+          "questionText": "Provide a data-flow diagram showing where customer data is stored and processed.",
+          "status": "reference",
+          "evidenceRefs": [{ "evidenceId": "data-flow-diagram", "locator": "Customer data flow view" }]
+        },
+        {
+          "questionId": "PAYMENT-08",
+          "questionText": "If you store, process, or transmit cardholder data, provide your current PCI DSS Attestation of Compliance.",
+          "status": "reference",
+          "evidenceRefs": [{ "evidenceId": "pci-dss-aoc", "locator": "Section 2: Executive Summary" }]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "iso27001",
+      "kind": "certificate",
+      "title": "ISO/IEC 27001 certificate",
+      "issuer": { "name": "Example Certification Body" },
+      "issuedOn": "2025-04-01",
+      "validFrom": "2025-04-01",
+      "validUntil": "2028-03-31",
+      "certification": {
+        "standard": "ISO/IEC 27001:2022",
+        "certificateNumber": "ECB-27001-0423",
+        "scope": "Example Supplier Operations AG and the listed backup operations in Zurich.",
+        "organizations": [
+          { "name": "Example Supplier Operations AG", "identifier": "https://supplier.example/id/operations" }
+        ],
+        "countries": ["CH"],
+        "accreditationBody": { "name": "Example Accreditation Service" },
+        "sites": ["Zurich, Switzerland"],
+        "statementOfApplicability": { "version": "4.2", "date": "2025-02-10" },
+        "lastAudit": { "date": "2026-03-18", "type": "surveillance" },
+        "verificationUri": "https://certbody.example/register/ECB-27001-0423"
+      },
+      "content": {
+        "mode": "external",
+        "uri": "https://supplier.example/assurance/iso27001-2025.pdf",
+        "mediaType": "application/pdf"
+      }
+    },
+    {
+      "id": "pci-dss-aoc",
+      "kind": "certificate",
+      "title": "PCI DSS Attestation of Compliance for Service Providers",
+      "issuer": { "name": "Example QSA GmbH" },
+      "issuedOn": "2026-05-12",
+      "validFrom": "2026-05-12",
+      "validUntil": "2027-05-11",
+      "certification": {
+        "standard": "PCI DSS v4.0.1",
+        "scope": "Subscription billing for Example Cloud Backup, including the cardholder data environment that handles customer card payments.",
+        "organizations": [
+          { "name": "Example Supplier Operations AG", "identifier": "https://supplier.example/id/operations" }
+        ],
+        "countries": ["CH"],
+        "accreditationBody": { "name": "PCI Security Standards Council" },
+        "sites": ["Zurich, Switzerland"],
+        "lastAudit": { "date": "2026-04-30", "type": "annual-assessment" }
+      },
+      "content": {
+        "mode": "external",
+        "uri": "https://supplier.example/trust/restricted/pci-dss-aoc-2026.pdf",
+        "mediaType": "application/pdf"
+      }
+    },
+    {
+      "id": "subprocessors",
+      "kind": "subprocessor-list",
+      "title": "Subprocessor list, November 2026",
+      "issuer": { "name": "Example Supplier Operations AG" },
+      "scope": "Example Cloud Backup.",
+      "validFrom": "2026-11-01",
+      "content": {
+        "mode": "file",
+        "path": "evidence/subprocessors.json",
+        "mediaType": "application/json",
+        "sha256": "d592d4af0ec1e2ee0ec12c82d2f6cf6526d5465e736998e44cd0df8a6b79f91e"
+      }
+    },
+    {
+      "id": "backup-policy-summary",
+      "kind": "policy",
+      "title": "Backup policy summary",
+      "issuer": { "name": "Example Supplier Operations AG" },
+      "issuedOn": "2026-06-15",
+      "content": {
+        "mode": "inline",
+        "text": "The policy sets a recovery point objective of 24 hours for the standard service tier."
+      }
+    },
+    {
+      "id": "data-flow-diagram",
+      "kind": "architecture-diagram",
+      "title": "Example Cloud Backup data-flow diagram",
+      "issuer": { "name": "Example Supplier Operations AG" },
+      "scope": "Production environment of Example Cloud Backup, Zurich.",
+      "issuedOn": "2026-10-20",
+      "content": {
+        "mode": "external",
+        "uri": "https://supplier.example/assurance/cloud-backup-data-flow.pdf",
+        "mediaType": "application/pdf"
+      }
+    },
+    {
+      "id": "soc2-type2",
+      "kind": "assurance-report",
+      "title": "SOC 2 Type 2 report, Example Cloud Backup",
+      "issuer": { "name": "Example Audit LLP" },
+      "scope": "Example Cloud Backup, Security and Availability criteria.",
+      "issuedOn": "2026-08-14",
+      "coveragePeriod": { "from": "2025-07-01", "to": "2026-06-30" },
+      "assuranceReport": {
+        "standard": "SOC 2",
+        "reportType": "type-2",
+        "criteria": ["Security", "Availability"],
+        "organizations": [
+          { "name": "Example Supplier Operations AG", "identifier": "https://supplier.example/id/operations" }
+        ],
+        "countries": ["CH"],
+        "opinion": "unmodified",
+        "exceptions": [
+          {
+            "reference": "CC6.2",
+            "description": "For 2 of 25 sampled leavers, access was removed later than the defined five business days.",
+            "managementResponse": "The leaver workflow now removes access automatically on the termination date."
+          }
+        ],
+        "subserviceOrganizations": [
+          {
+            "organization": { "name": "Example Hosting SA" },
+            "method": "carve-out",
+            "services": "Data centre hosting and physical security."
+          }
+        ],
+        "userEntityControls": [
+          "Customers manage user access to the backup console for their own staff."
+        ]
+      },
+      "content": {
+        "mode": "external",
+        "uri": "https://supplier.example/trust/restricted/soc2-type2-2026.pdf",
+        "mediaType": "application/pdf"
+      }
+    },
+    {
+      "id": "soc2-bridge-letter",
+      "kind": "bridge-letter",
+      "title": "Bridge letter for the SOC 2 Type 2 report",
+      "issuer": { "name": "Example Supplier Operations AG" },
+      "scope": "Example Cloud Backup.",
+      "issuedOn": "2026-11-20",
+      "coveragePeriod": { "from": "2026-07-01", "to": "2026-10-31" },
+      "relatedEvidence": [{ "evidenceId": "soc2-type2", "relationship": "bridges" }],
+      "content": {
+        "mode": "inline",
+        "text": "Management is not aware of any material changes to the controls described in the SOC 2 Type 2 report between 1 July 2026 and 31 October 2026."
+      }
+    }
+  ]
+}

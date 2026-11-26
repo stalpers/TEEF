@@ -1,0 +1,16 @@
+{
+  "description": "The archive file is larger than the recipient's limit of 200 bytes.",
+  "input": "package.zip",
+  "context": {
+    "limits": {
+      "maxArchiveBytes": 200
+    }
+  },
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-07"
+    ],
+    "warnings": []
+  }
+}

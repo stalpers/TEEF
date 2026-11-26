@@ -1,0 +1,11 @@
+{
+  "description": "An external reference carries an access token in its query string. The recipient may reject or quarantine it, so either result passes as long as TEEF-URI-06 is reported.",
+  "input": "package",
+  "expected": {
+    "result": "any",
+    "errors": [],
+    "warnings": [
+      "TEEF-URI-06"
+    ]
+  }
+}

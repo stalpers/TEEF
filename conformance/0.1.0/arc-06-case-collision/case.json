@@ -1,0 +1,11 @@
+{
+  "description": "Two archive entries differ only in letter case: evidence/a.json and evidence/A.json.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-06"
+    ],
+    "warnings": []
+  }
+}

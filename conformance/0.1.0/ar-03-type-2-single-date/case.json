@@ -1,0 +1,11 @@
+{
+  "description": "A Type 2 report covers a single date instead of a period.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-AR-03"
+    ],
+    "warnings": []
+  }
+}

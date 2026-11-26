@@ -1,0 +1,11 @@
+{
+  "description": "An evidence item's coverage period starts after it ends.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-DATE-03"
+    ],
+    "warnings": []
+  }
+}

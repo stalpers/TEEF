@@ -1,0 +1,11 @@
+{
+  "description": "The certificate names the subject's entity without an identifier, so the names are shown for review instead of being reported as a mismatch.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-SCOPE-08"
+    ]
+  }
+}

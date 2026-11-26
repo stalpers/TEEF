@@ -1,0 +1,16 @@
+{
+  "description": "The superseded package, which the recipient has, comes from a different publisher.",
+  "input": "package",
+  "context": {
+    "previousPackages": [
+      "previous/manifest.json"
+    ]
+  },
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-REF-08"
+    ],
+    "warnings": []
+  }
+}

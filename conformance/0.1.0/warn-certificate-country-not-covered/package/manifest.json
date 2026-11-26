@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "0.1.0",
+  "packageId": "7c1e2a64-3b0f-4d8e-9a51-2f6b8c0d4e17",
+  "generatedAt": "2026-11-26T09:00:00Z",
+  "publisher": {
+    "name": "Example Supplier AG",
+    "identifier": "https://supplier.example/id/ag"
+  },
+  "subject": {
+    "organization": {
+      "name": "Example Supplier AG",
+      "identifier": "https://supplier.example/id/ag"
+    },
+    "scope": {
+      "countries": [
+        "CH",
+        "PT"
+      ]
+    }
+  },
+  "questionnaires": [
+    {
+      "id": "https://buyer.example/questionnaires/minimal",
+      "version": "1",
+      "responses": [
+        {
+          "questionId": "Q-01",
+          "status": "answered",
+          "answer": true,
+          "evidenceRefs": [
+            {
+              "evidenceId": "policy-summary"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "policy-summary",
+      "kind": "policy",
+      "title": "Information security policy summary",
+      "issuer": {
+        "name": "Example Supplier AG"
+      },
+      "scope": "Example Supplier AG.",
+      "content": {
+        "mode": "inline",
+        "text": "The information security policy is approved by the board and reviewed each year."
+      }
+    },
+    {
+      "id": "iso27001",
+      "kind": "certificate",
+      "title": "ISO/IEC 27001 certificate",
+      "issuer": {
+        "name": "Example Certification Body"
+      },
+      "validFrom": "2025-04-01",
+      "validUntil": "2028-03-31",
+      "certification": {
+        "standard": "ISO/IEC 27001:2022",
+        "certificateNumber": "ECB-27001-0001",
+        "scope": "Example Supplier AG information security management system.",
+        "accreditationBody": {
+          "name": "Example Accreditation Service"
+        },
+        "countries": [
+          "CH"
+        ]
+      },
+      "content": {
+        "mode": "external",
+        "uri": "https://supplier.example/assurance/iso27001.pdf",
+        "mediaType": "application/pdf"
+      }
+    }
+  ]
+}

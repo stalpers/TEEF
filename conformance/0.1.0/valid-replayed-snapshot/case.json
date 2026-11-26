@@ -1,0 +1,14 @@
+{
+  "description": "The recipient already received a byte-identical manifest with the same package ID. Replaying a snapshot is valid.",
+  "input": "package",
+  "context": {
+    "previousPackages": [
+      "previous/manifest.json"
+    ]
+  },
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": []
+  }
+}

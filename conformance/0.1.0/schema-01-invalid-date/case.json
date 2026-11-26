@@ -1,0 +1,11 @@
+{
+  "description": "An evidence date is not a real calendar date. Requires format assertions.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-SCHEMA-01"
+    ],
+    "warnings": []
+  }
+}

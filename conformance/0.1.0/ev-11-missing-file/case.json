@@ -1,0 +1,11 @@
+{
+  "description": "A declared evidence file is not in the package.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-EV-11"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The assurance report carries a qualified opinion.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-AR-07"
+    ]
+  }
+}

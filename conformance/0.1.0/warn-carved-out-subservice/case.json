@@ -1,0 +1,11 @@
+{
+  "description": "The assurance report carves out a subservice organisation.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-AR-09"
+    ]
+  }
+}

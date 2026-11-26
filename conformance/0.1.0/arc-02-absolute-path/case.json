@@ -1,0 +1,11 @@
+{
+  "description": "An archive entry uses an absolute path.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ARC-02"
+    ],
+    "warnings": []
+  }
+}

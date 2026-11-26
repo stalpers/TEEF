@@ -1,0 +1,11 @@
+{
+  "description": "One questionnaire contains two responses for question Q-01.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ID-03"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description": "The recipient does not know the questionnaire ID and version used in the package.",
+  "input": "package",
+  "context": {
+    "knownQuestionnaires": [
+      {
+        "id": "https://buyer.example/questionnaires/other",
+        "version": "1"
+      }
+    ]
+  },
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-ANS-12"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The archive holds the manifest in a subfolder instead of at its root.",
+  "input": "package.zip",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-PKG-04"
+    ],
+    "warnings": []
+  }
+}

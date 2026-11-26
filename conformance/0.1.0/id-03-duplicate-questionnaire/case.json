@@ -1,0 +1,11 @@
+{
+  "description": "Two questionnaires share the same ID and version.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ID-03"
+    ],
+    "warnings": []
+  }
+}

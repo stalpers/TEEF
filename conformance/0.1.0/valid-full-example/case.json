@@ -1,0 +1,15 @@
+{
+  "description": "The published example package. It is valid, and its SOC 2 details, PCI attestation and unscoped policy summary raise warnings.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-AR-08",
+      "TEEF-AR-09",
+      "TEEF-AR-10",
+      "TEEF-CERT-07",
+      "TEEF-EV-10"
+    ]
+  }
+}

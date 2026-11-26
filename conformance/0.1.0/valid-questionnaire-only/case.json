@@ -1,0 +1,9 @@
+{
+  "description": "A package with questionnaire responses and no evidence.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": []
+  }
+}

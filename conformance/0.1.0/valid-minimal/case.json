@@ -1,0 +1,9 @@
+{
+  "description": "The smallest package used as the base for other cases: one answered question and one inline evidence item.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": []
+  }
+}

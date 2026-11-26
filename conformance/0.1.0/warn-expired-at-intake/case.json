@@ -1,0 +1,14 @@
+{
+  "description": "An evidence item was valid when the package was generated, but expired before the recipient took the package in.",
+  "input": "package",
+  "context": {
+    "intakeDate": "2027-01-15"
+  },
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-DATE-05"
+    ]
+  }
+}

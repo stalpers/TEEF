@@ -1,0 +1,9 @@
+{
+  "description": "A package exchanged as a ZIP archive, with an evidence/ directory entry and one declared file.",
+  "input": "package.zip",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": []
+  }
+}

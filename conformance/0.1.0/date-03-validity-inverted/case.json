@@ -1,0 +1,11 @@
+{
+  "description": "An evidence item's validFrom is later than its validUntil.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-DATE-03"
+    ],
+    "warnings": []
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "service": "Example Cloud Backup",
+  "effectiveOn": "2026-11-01",
+  "subprocessors": [
+    {
+      "name": "Example Hosting SA",
+      "purpose": "Backup storage",
+      "processingCountries": ["CH"]
+    }
+  ]
+}

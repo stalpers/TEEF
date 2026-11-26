@@ -1,0 +1,11 @@
+{
+  "description": "A declared evidence file is present, but one byte differs from the declared digest.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-EV-11"
+    ],
+    "warnings": []
+  }
+}

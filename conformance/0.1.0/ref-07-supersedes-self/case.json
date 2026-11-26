@@ -1,0 +1,11 @@
+{
+  "description": "The package supersedes its own package ID.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-REF-07"
+    ],
+    "warnings": []
+  }
+}

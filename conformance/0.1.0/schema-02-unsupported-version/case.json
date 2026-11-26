@@ -1,0 +1,11 @@
+{
+  "description": "The manifest declares a schema version this suite does not define. The recipient reports it instead of processing the package.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-SCHEMA-02"
+    ],
+    "warnings": []
+  }
+}

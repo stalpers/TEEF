@@ -1,0 +1,11 @@
+{
+  "description": "The assurance report lists a complementary user entity control.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-AR-10"
+    ]
+  }
+}

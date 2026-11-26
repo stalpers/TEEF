@@ -1,0 +1,11 @@
+{
+  "description": "Two evidence items share the ID policy-summary.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-ID-03"
+    ],
+    "warnings": []
+  }
+}

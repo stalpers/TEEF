@@ -1,0 +1,11 @@
+{
+  "description": "A Type 1 report has a coverage period of a year instead of a single date.",
+  "input": "package",
+  "expected": {
+    "result": "invalid",
+    "errors": [
+      "TEEF-AR-02"
+    ],
+    "warnings": []
+  }
+}

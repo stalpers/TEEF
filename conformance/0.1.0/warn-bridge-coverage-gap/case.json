@@ -1,0 +1,11 @@
+{
+  "description": "The bridge letter starts a month after the report's coverage ends, leaving a gap.",
+  "input": "package",
+  "expected": {
+    "result": "valid",
+    "errors": [],
+    "warnings": [
+      "TEEF-DATE-02"
+    ]
+  }
+}
